@@ -59,7 +59,7 @@
     }).done(function(data) {
         output.text(data);
     }).fail(function(data) {
-        output.text("Server error: " + data);
+        output.text("Server error: " + data + "\t" + to_compile);
     });
 };
 </script>
