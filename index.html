@@ -66,13 +66,21 @@
 function run() {
     var http = new XMLHttpRequest();
     http.open("POST", "https://coliru.stacked-crooked.com/compile", false);
-    http.send(JSON.stringify({ "cmd": "g++ main.cpp && ./a.out", "src": code.getValue() }));
+    var initialCommand = "g++ -std=c++17 -O2 -Wall -pedantic -pthread main.cpp && ./a.out";
+    var input = $("#input");
+    if (input.length > 0) {
+        input.replace(/ /g, "\n");
+        initialCommand += " << EOF\n" + input + "\nEOF";
+    }
+    http.send(JSON.stringify({ "cmd": initialCommand, "src": code.getValue() }));
     var output = $("#output");
     output.text('');
     output.text(http.response);
 }
 </script>
-<button id="run" onclick='run();'>Run</button> 
-<p>Output:</p><pre id="output">Waiting...</pre>
+<button id="run" onclick='run();'>Run</button>
+<p>INPUT</p>
+<input id="input" type="text" size=100>
+<p>OUTPUT</p><pre id="output">Waiting...</pre>
 </body>
 </html>
