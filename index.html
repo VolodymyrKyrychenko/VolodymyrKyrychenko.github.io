@@ -69,7 +69,7 @@ function run() {
     var initialCommand = "g++ -std=c++17 -O2 -Wall -pedantic -pthread main.cpp && ./a.out";
     var input = $("#input");
     if (input.length > 0) {
-        input.replace(/ /g, "\n");
+        input = input.replace(/ /g, "\n");
         initialCommand += " << EOF\n" + input + "\nEOF";
     }
     http.send(JSON.stringify({ "cmd": initialCommand, "src": code.getValue() }));
