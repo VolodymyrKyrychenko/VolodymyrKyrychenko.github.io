@@ -38,8 +38,7 @@
 <script>
     function run() {
     // Команда для компиляции на удаленном сервере
-    var cmd = "g++ -Wall main.cpp -o main_prog && echo 'Compilation: SUCCESS."
-        + " Program output is:\n' && ./main_prog && echo \"\nExit code: $?\"";
+    var cmd = "g++ -std=c++17 -O2 -Wall -pedantic -pthread main.cpp && ./a.out";
 
     var output = $("#output");
     output.text('');
@@ -59,7 +58,7 @@
     }).done(function(data) {
         output.text(data);
     }).fail(function(data) {
-        output.text(/*"Server error: " + data*//*to_compile*/code.getValue());
+        output.text("Server error: " + data);
     });
 };
 </script>
