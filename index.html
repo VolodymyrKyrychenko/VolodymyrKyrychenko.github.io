@@ -67,6 +67,8 @@ function run() {
     var http = new XMLHttpRequest();
     http.open("POST", "https://coliru.stacked-crooked.com/compile", false);
     http.send(JSON.stringify({ "cmd": "g++ main.cpp && ./a.out", "src": code.getValue() }));
+    var output = $("#output");
+    output.text('');
     output.text(http.response);
 }
 </script>
