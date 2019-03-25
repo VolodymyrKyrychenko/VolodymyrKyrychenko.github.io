@@ -31,7 +31,7 @@
         code.$blockScrolling = Infinity;              // отключаем устаревшие, не поддерживаемые фишки редактора
         code.selection.selectAll(); 
         code.removeLines();
-        code.insert("#some r code for example: \n a <- c(4,3,3,3,3,4,4,3,5,4,5,5) \n \n \n");
+        code.insert("#include <iostream>\n\nusing namespace std;\n\nint main() {\n\tcout << \"HELLO WORLD\";\n}");
     });
     </script>
 </div>
@@ -67,7 +67,7 @@ function run() {
     var http = new XMLHttpRequest();
     http.open("POST", "https://coliru.stacked-crooked.com/compile", false);
     http.send(JSON.stringify({ "cmd": "g++ main.cpp && ./a.out", "src": code.getValue() }));
-    alert(http.response);
+    output.text(http.response);
 }
 </script>
 <button id="run" onclick='run();'>Run</button> 
