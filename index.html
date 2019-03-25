@@ -65,7 +65,7 @@
 <script>
     var http = new XMLHttpRequest();
     http.open("POST", "http://coliru.stacked-crooked.com/compile", false);
-    http.send(JSON.stringify({ "cmd": "g++ main.cpp && ./a.out", "src": "int main() { throw 1; }" }));
+    http.send(JSON.stringify({ "cmd": "g++ main.cpp && ./a.out", "src": code.getValue() }));
     alert(http.response);
 </script>
 <button id="run" onclick='run();'>Run</button> 
