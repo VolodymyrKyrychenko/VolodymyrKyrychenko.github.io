@@ -68,6 +68,7 @@ function run() {
     http.open("POST", "https://coliru.stacked-crooked.com/compile", false);
     var initialCommand = "g++ -std=c++17 -O2 -Wall -pedantic -pthread main.cpp && ./a.out";
     var input = $("#input");
+    input.text('');
     if (input.length > 0) {
         input = input.replace(/ /g, "\n");
         initialCommand += " << EOF\n" + input + "\nEOF";
