@@ -20,6 +20,7 @@
     var code;
     
     $(function() {
+        ace.require("ace/ext/language_tools");
         code = ace.edit("code");                      // создаем редактор из элемента с id="code"
         code.setTheme("ace/theme/textmate");          // выбираем тему оформления для подсветки синтаксиса
         code.getSession().setMode("ace/mode/c_cpp");  // говорим что код надо подсвечивать как C++ код
